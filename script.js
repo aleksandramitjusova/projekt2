@@ -1,50 +1,40 @@
+const colors = ['punane', 'sinine', 'roheline', 'kollane', 'must', 'valge', 'lilla', 'pruun', 'hall', 'beež', 'oranž'];
+let selectedColor = colors[Math.floor(Math.random() * colors.length)];
+let attempts = 0;
+const feedbackMessage = document.getElementById('feedbackMessage');
+const attemptsMessage = document.getElementById('attemptsMessage');
+const resetButton = document.getElementById('resetButton');
 
-
-function startGame() {
-    numberToGuess = Math.floor(Math.random() * 100) + 1;
-    attempts = 0;
-    document.getElementById('message').textContent = '';
-    document.getElementById('attempts').textContent = '';
-    document.getElementById('guess').value = '';
-    document.getElementById('guess').disabled = false;
-    document.getElementById('restart').style.display = 'none';
-}
-
-document.getElementById('submit').addEventListener('click', function() {
-    const guessInput = document.getElementById('guess');
-    const guess = Number(guessInput.value);
-    attempts++;
-
-    const messageElement = document.getElementById('message');
-    const attemptsElement = document.getElementById('attempts');
-
-    if (guess < 1 || guess > 100 || isNaN(guess)) {
-        messageElement.textContent = "Palun sisesta number vahemikus 1-100.";
-        messageElement.className = '';
-    
-    } else if (guess < numberToGuess) {
-        messageElement.textContent = "Liiga madal! Proovi uuesti.";
-        messageElement.className = 'too-low';
-     } 
-    
-     else if (guess > numberToGuess) {
-        messageElement.textContent = "Liiga kõrge! Proovi uuesti.";
-        messageElement.className = 'too-high';
-    } 
-    
-    else {
-        messageElement.textContent = `Palju õnne! Sa arvasid numbri ära ${numberToGuess} ${attempts} katsega.`;
-        messageElement.className = 'correct';
-        guessInput.disabled = true;
-        document.getElementById('restart').style.display = 'block';
+function handleColorClick(color) {
+    attempts += 1;
+    console.log("värvid", color, selectedColor)
+    if (color === selectedColor) {
+        feedbackMessage.textContent = `Õige! Arvasid värvi ära!`;
+        attemptsMessage.textContent = `Sinu katsete arv: ${attempts}`;
+        resetButton.style.display = 'inline-block';
+    } else {
+        feedbackMessage.textContent = `Vale värv, proovi uuesti!`;
+        attemptsMessage.textContent = `Katsete arv: ${attempts}`;
     }
+}
+document.getElementById('punane').addEventListener('click', () => handleColorClick('punane'));
+document.getElementById('sinine').addEventListener('click', () => handleColorClick('sinine'));
+document.getElementById('roheline').addEventListener('click', () => handleColorClick('roheline'));
+document.getElementById('kollane').addEventListener('click', () => handleColorClick('kollane'));
+document.getElementById('must').addEventListener('click', () => handleColorClick('must'));
+document.getElementById('valge').addEventListener('click', () => handleColorClick('valge'));
+document.getElementById('lilla').addEventListener('click', () => handleColorClick('lilla'));
+document.getElementById('pruun').addEventListener('click', () => handleColorClick('pruun'));
+document.getElementById('hall').addEventListener('click', () => handleColorClick('hall'));
+document.getElementById('beež').addEventListener('click', () => handleColorClick('beež'));
+document.getElementById('oranž').addEventListener('click', () => handleColorClick('oranž'));
 
-    attemptsElement.textContent = `Katsete arv: ${attempts}`;
-    guessInput.value = '';
+resetButton.addEventListener('click', function () {
+    selectedColor = colors[Math.floor(Math.random() * colors.length)];
+    attempts = 0;
+    feedbackMessage.textContent = '';
+    attemptsMessage.textContent = '';
+
 });
 
-document.getElementById('restart').addEventListener('click', startGame);
-
-
-startGame();
 

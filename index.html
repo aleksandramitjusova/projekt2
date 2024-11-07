@@ -1,25 +1,35 @@
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arva ära mäng</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Arva värv ära mäng</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
-    <div class="container">
-        <h1>Arva ära mäng</h1>
-        <p>Arva ära number vahemikus 1-100</p>
-        <input type="number" id="guess" placeholder="Sisesta number" min="1" max="100">
-        <button id="submit">Arva ära!</button>
-        <button id="restart" style="display: none;">Taaskäivita mäng</button>
-        <p id="message"></p>
-        <p id="attempts"></p>
+    <div class="game-container">
+        <h1>Arva värv ära!</h1>
+        <p id="instructions">Püüa ära arvata, mis värvi ma mõtlen! Vali värv allolevast valikust ja sisesta see.</p>
+        <div class="color-options">
+            <button class="color-button" id="punane">Punane</button>
+            <button class="color-button" id="sinine">Sinine</button>
+            <button class="color-button" id="roheline">Roheline</button>
+            <button class="color-button" id="lilla">Lilla</button>
+            <button class="color-button" id="must">Must</button>
+            <button class="color-button" id="valge">Valge</button>
+            <button class="color-button" id="kollane">Kollane</button>
+            <button class="color-button" id="pruun">Pruun</button>
+            <button class="color-button" id="hall">Hall</button>
+            <button class="color-button" id="beež">Beež</button>
+            <button class="color-button" id="oranž">Oranž</button>
+        </div>
+        <div class="feedback">
+            <p id="feedbackMessage"></p>
+            <p id="attemptsMessage"></p>
+        </div>
+
+        <button id="resetButton" class="reset-button">Alusta uuesti</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
