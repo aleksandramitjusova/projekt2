@@ -36,5 +36,3 @@ resetButton.addEventListener('click', function () {
     attemptsMessage.textContent = '';
 
 });
-
-
