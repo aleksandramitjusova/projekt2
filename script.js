@@ -1,3 +1,5 @@
+const url = 'https://kool.krister.ee/chat/arva_ara_mang'
+
 const colors = ['punane', 'sinine', 'roheline', 'kollane', 'must', 'valge', 'lilla', 'pruun', 'hall', 'beež', 'oranž'];
 let selectedColor = colors[Math.floor(Math.random() * colors.length)];
 let attempts = 0;
